@@ -146,6 +146,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2020/07/02/f2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dolphin Fu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海豚哥的小屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/07/02/f2/" class="post-title-link" itemprop="url">字数统计</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-02 20:46:36" itemprop="dateCreated datePublished" datetime="2020-07-02T20:46:36+08:00">2020-07-02</time>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>今天搞了一下字数统计，也不算太复杂，网上攻略有点儿乱，不知道为啥。</p>
+<h3 id="hexo-wordcout"><a href="#hexo-wordcout" class="headerlink" title="hexo-wordcout"></a>hexo-wordcout</h3><p>我看的第一篇攻略说要使用hexo-wordcout功能。</p>
+<p>1、首先使用npm功能，在博客的目录下，使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-wordcount –save</span><br></pre></td></tr></table></figure>
+
+<p>2、然后在next的目录下，找到_config.yml文件，在最后补上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Post wordcount display settings</span><br><span class="line">#Dependencies: https:&#x2F;&#x2F;github.com&#x2F;willin&#x2F;hexo-wordcount</span><br><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br></pre></td></tr></table></figure>
+
+<p>3、修改 \layout\ _marco\post.swig文件，使得每篇文章都有字数统计。</p>
+<p>使用搜索找到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if post.categories and post.categories.length and theme.post_meta.categories %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后这段文字之前插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title&#x3D;&quot;&#123;&#123; __(&#39;post.wordcount&#39;) &#125;&#125;&quot;&gt;</span><br><span class="line">   字数统计 &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line">&lt;span title&#x3D;&quot;&#123;&#123; __(&#39;post.min2read&#39;) &#125;&#125;&quot;&gt;</span><br><span class="line">   阅读时间 &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line">&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、修改\layout\ _partials\footer.swig文件，使得最下方有所有文章总字数统计。</p>
+<p>使用搜索找到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.footer.powered %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这之前插入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;post-count&quot;&gt;共&#123;&#123; totalcount(site) &#125;&#125;字&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>好了基本上重载后就可以看到了，中文可以改成你喜欢的任何字，“字数统计”可以改为“废话”、“满腹经纶”都行。</p>
+<h3 id="hexo-symbols-count-time"><a href="#hexo-symbols-count-time" class="headerlink" title="hexo-symbols-count-time"></a>hexo-symbols-count-time</h3><p>实际上hexo-symbols-count-time才是next本身集成的，装这个更方便。</p>
+<p>1、首先使用npm功能，在博客的目录下，使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-symbols-count-time –save</span><br></pre></td></tr></table></figure>
+
+<p>2、在博客根目录下的_config.yml中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">#文章内是否显示</span><br><span class="line">symbols: true</span><br><span class="line">time: true</span><br><span class="line">#网页底部是否显示</span><br><span class="line">total_symbols: true</span><br><span class="line">total_time: true</span><br></pre></td></tr></table></figure>
+
+<p>3、然后在next的目录下，找到_config.yml文件，搜索symbols_count_time，把下面的改成这样：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true  </span><br><span class="line">  item_text_post: true  </span><br><span class="line">  item_text_total: true  </span><br><span class="line">  awl: 4</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
+
+
+
+<p>4、重载后完成</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>hexo-wordcout麻烦点，而且英文统计不好，统计的字数要比下面的少，不过可以学习点diy的知识，能改的比较好玩一些吧。</p>
+<p>hexo-symbols-count-time是自带的，特别方便也很好用，还有图标显示，缺点就是站点总字数这种词不能改。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2020/06/30/f1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -172,12 +281,6 @@
 
               <time title="创建时间：2020-06-30 21:58:42" itemprop="dateCreated datePublished" datetime="2020-06-30T21:58:42+08:00">2020-06-30</time>
             </span>
-<span title="post.wordcount">
-    字数统计 476 字
-    </span>
-<span title="post.min2read">
-  阅读时长 1 分钟
- </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -257,12 +360,6 @@
 
               <time title="创建时间：2017-06-27 21:11:12" itemprop="dateCreated datePublished" datetime="2017-06-27T21:11:12+08:00">2017-06-27</time>
             </span>
-<span title="post.wordcount">
-    字数统计 235 字
-    </span>
-<span title="post.min2read">
-  阅读时长 1 分钟
- </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -346,12 +443,6 @@
 
               <time title="创建时间：2000-06-28 22:31:23" itemprop="dateCreated datePublished" datetime="2000-06-28T22:31:23+08:00">2000-06-28</time>
             </span>
-<span title="post.wordcount">
-    字数统计 2 字
-    </span>
-<span title="post.min2read">
-  阅读时长 1 分钟
- </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -427,12 +518,6 @@
 
               <time title="创建时间：2000-03-27 11:11:11" itemprop="dateCreated datePublished" datetime="2000-03-27T11:11:11+08:00">2000-03-27</time>
             </span>
-<span title="post.wordcount">
-    字数统计 154 字
-    </span>
-<span title="post.min2read">
-  阅读时长 1 分钟
- </span>
 
           <br>
             <span class="post-meta-item" title="本文字数">
@@ -555,7 +640,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -597,17 +682,15 @@
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">3k</span>
 <div class=“theme-info”>
 	<div class=“powered-by”></div>
-	<span class=“post-count”>共867字</span>
-	</div>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1 分钟</span>
+    <span title="站点阅读时长">2 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
   </div>
