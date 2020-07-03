@@ -217,25 +217,6 @@
 <h3 id="hexo-wordcout"><a href="#hexo-wordcout" class="headerlink" title="hexo-wordcout"></a>hexo-wordcout</h3><p>我看的第一篇攻略说要使用hexo-wordcout功能。</p>
 <p>1、首先使用npm功能，在博客的目录下，使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-wordcount –save</span><br></pre></td></tr></table></figure>
-
-<p>2、然后在next的目录下，找到_config.yml文件，在最后补上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#Post wordcount display settings</span><br><span class="line">#Dependencies: https:&#x2F;&#x2F;github.com&#x2F;willin&#x2F;hexo-wordcount</span><br><span class="line">post_wordcount:</span><br><span class="line">  item_text: true</span><br><span class="line">  wordcount: true</span><br><span class="line">  min2read: true</span><br></pre></td></tr></table></figure>
-
-<p>3、修改 \layout\ _marco\post.swig文件，使得每篇文章都有字数统计。</p>
-<p>使用搜索找到</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if post.categories and post.categories.length and theme.post_meta.categories %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后这段文字之前插入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;span title&#x3D;&quot;&#123;&#123; __(&#39;post.wordcount&#39;) &#125;&#125;&quot;&gt;</span><br><span class="line">   字数统计 &#123;&#123; wordcount(post.content) &#125;&#125; 字</span><br><span class="line">&lt;&#x2F;span&gt;</span><br><span class="line">&lt;span title&#x3D;&quot;&#123;&#123; __(&#39;post.min2read&#39;) &#125;&#125;&quot;&gt;</span><br><span class="line">   阅读时间 &#123;&#123; min2read(post.content) &#125;&#125; 分钟</span><br><span class="line">&lt;&#x2F;span&gt;</span><br></pre></td></tr></table></figure>
-
-<p>4、修改\layout\ _partials\footer.swig文件，使得最下方有所有文章总字数统计。</p>
-<p>使用搜索找到：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;%- if theme.footer.powered %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在这之前插入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;span class&#x3D;&quot;post-count&quot;&gt;共&#123;&#123; totalcount(site) &#125;&#125;字&lt;&#x2F;span&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>好了基本上重载后就可以看到了，中文可以改成你喜欢的任何字，“字数统计”可以改为“废话”、“满腹经纶”都行。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/07/02/f2/#more" rel="contents">
@@ -315,14 +296,14 @@
 
       
           <p>​       我的朋友<a href="https://xlm4056.github.io/" target="_blank" rel="noopener">小谢</a>是github的深度粉丝，他推荐我来github建个仓库建个站什么的，小谢是一个技术宅男兼钢铁直男，公司不鼓励加班，但他还是每天加班到半夜，在做嵌入式开发的同时自我驱动，兼职开发实用工具帮助其它工程师更好的工作。小谢的快乐很纯粹，每个人都能感受到的那种，写一段代码就可以乐半天，完善了一个工具就可以开心好几天。</p>
-<p>​        然而小谢哪儿都好，就是不注重外在美，他做的界面每次都被领导吐槽，如图所示：</p>
-<p>​        <img src="/2020/06/30/f1/f00102.jpg" alt="f01002"></p>
-<p>​        程序图标永远是：</p>
-<p>​        <img src="/2020/06/30/f1/f00101.jpg" alt="f01001"></p>
-<p>​        似乎还活在上个世纪，内在美虽好但完全不注重外在的东西恐怕也是不可取的吧。</p>
-<p>​        诗云：“神存富贵，始轻黄金。”可神未到富贵，不该轻视黄金，中国的传统美德是注重内在修养，提升个人品德，当然是正确的，不要人夸颜色好，要留清气满乾坤。就像小谢一样努力建设仓库，码代码提升自身技术水平，这是一件很快乐的事，但在做这些的同时，完善一下个人审美、个人形象并不矛盾，须知再好的后端也需要前端的展示，再精湛的数据库也离不开出色的用户界面，不然技术再扎实甲方人员可能只看了一秒就请你黯然走人了。同时这对自身职业发展也是极其不利的，今天都已经是2020年了，技术没有太大瓶颈，说白了你会的总有其他人会，越上层的职位反而更需要整体思考的能力。</p>
-<p>​        最后，当然希望小谢快乐常在，早日找到自己的真爱。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/30/f1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -395,17 +376,14 @@
       
           <p>​        诗云：一身去国六千里，万死投荒十二年。</p>
 <p>​        鄙人从事硬件工程师，入坑12年，不学无术，不知不觉中年危机已到，不学点高科技只怕要被淘汰，遂咨询软件部小年轻，方知有Github，大学里学习的turbo C、Basic、foxpro、delphi好像都过时了哈，搞个Pages也不容易，先看看学习学习。</p>
-<p>​        最后，一首柳宗元的《觉衰》送给各位中年危机者，老将至，志未酬，祝安康快乐。</p>
-<blockquote>
-<p>觉衰</p>
-<p>柳宗元</p>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>久知老会至，不谓便见侵。今年宜未衰，稍已来相寻。<br>齿疏发就种，奔走力不任。咄此可奈何，未必伤我心。<br>彭聃安在哉，周孔亦已沉。古称寿圣人，曾不留至今。<br>但愿得美酒，朋友常共酙，是时春向暮，桃李生繁阴。<br>日照天正绿，杳杳归鸿吟。出门呼所亲，扶杖登西林。</p>
-</blockquote>
-</blockquote>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/06/27/hello-wold/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -555,18 +533,14 @@
 <h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建一篇新的文章"><a href="#创建一篇新的文章" class="headerlink" title="创建一篇新的文章"></a>创建一篇新的文章</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br><span class="line">$ hexo n <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>更多信息： <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">写作</a></p>
-<h3 id="运行服务器-本地查看"><a href="#运行服务器-本地查看" class="headerlink" title="运行服务器/本地查看"></a>运行服务器/本地查看</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-
-<p>更多信息： <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">服务器</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
-
-<p>更多信息：<a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">生成文件</a></p>
-<h3 id="部署到远程站点"><a href="#部署到远程站点" class="headerlink" title="部署到远程站点"></a>部署到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
-
-<p>更多信息：<a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">部署</a></p>
-<h3 id="清空缓存"><a href="#清空缓存" class="headerlink" title="清空缓存"></a>清空缓存</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2000/03/27/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
