@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"dolphinfu.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#4169E1","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="&amp;emsp;&amp;emsp;最近NGA上这个题目挺红的，自从7H bug过了来登之后，人人都抒发回忆这么多年来BLZ一个又一个失误..在我不长的wow raid经历中也遇到很多bugs..以下排名不分先后：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="那些年我们用过的BUGs">
+<meta property="og:url" content="http://dolphinfu.github.io/2013/04/22/b164/index.html">
+<meta property="og:site_name" content="海豚哥的小屋">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;最近NGA上这个题目挺红的，自从7H bug过了来登之后，人人都抒发回忆这么多年来BLZ一个又一个失误..在我不长的wow raid经历中也遇到很多bugs..以下排名不分先后：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2013-04-21T16:45:18.000Z">
+<meta property="article:modified_time" content="2020-07-16T08:43:22.753Z">
+<meta property="article:author" content="Dolphin Fu">
+<meta property="article:tag" content="魔兽世界">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://dolphinfu.github.io/2013/04/22/b164/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>那些年我们用过的BUGs | 海豚哥的小屋</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">海豚哥的小屋</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">上善若水</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2013/04/22/b164/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dolphin Fu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海豚哥的小屋">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          那些年我们用过的BUGs
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2013-04-22 00:45" itemprop="dateCreated datePublished" datetime="2013-04-22T00:45:18+08:00">2013-04-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/blogbus/" itemprop="url" rel="index"><span itemprop="name">blogbus</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.1k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>&emsp;&emsp;最近NGA上这个题目挺红的，自从7H bug过了来登之后，人人都抒发回忆这么多年来BLZ一个又一个失误..在我不长的wow raid经历中也遇到很多bugs..以下排名不分先后：<a id="more"></a><br>   1、最贵的BUG<br>   在当年NAXX2团，超凡带我们用了一个bug，用来撸过DK2号收割者戈提克，大概是叫这个名字吧，用的就是3灵魂石+3化石药剂+qs干涉，所谓4个人扛过小怪阶段，等boss冲过来，全体撸boss，只要dps足够就是送装备的..作为团队中的唯二ss之一，我有时候会双开天公的号来应急，好在灵魂石倒还不算是很大的问题，问题在于化石药剂！！在一个点卡200多g的年代，一瓶化石药剂那是实打实的80-100g，为了过一个boss，团队出血30元。好吧其实相对其他NAXX的boss 30元已经属于便宜的了..<br>   2、脸型很重要<br>   NAXX无疑是赶工之作，bug之多..举世无双，在绿水四溢的憎恶区，巨犬格拉斯本是强力的存在，然后有人发明了在洞口左晃右晃前晃后晃..它跑出来了变成木桩了..然而这个bug难点在于..要让格拉斯看上你，美型很重要啊，羽毛这样的矮人猎人显然是不符合格拉斯的审美观的..相对来说精灵就比较顺眼了..<br>   3、裸体才会出<br>   有些boss的bug简直让人不敢想象，谁发明出来的？这么有才..是啊，我说的正是太阳井3号菲米斯，逆天的跳箱子bug..本来平整的地面，莫名其妙多了个箱子，结果被利用上了..当然要卡上也不容易，尤其是脸黑的一塌糊涂的时候，于是群众们纷纷脱下装备一个个的去试..最多一次还花了超过半小时..<br>   4、联盟的福利<br>   哈哈，boss大多数情况都是对手，成为队友的机会可不大，然而BWL一号就是这么半个自己人..兄弟们有什么buff上什么.x那个骑士怎么死了..嘿嘿这就是传说中上古神技神圣干涉，一般情况只用于灭团时省修理费..然而给了这个boss干涉以后，小怪全消失了..最大的难点没有了..美中不足的是boss不会自己点掉干涉..<br>   5、原地跳舞<br>   肮脏的希尔盖本是一个对团队移动预判要求颇高的boss，然而我们团从未真正的打过一次，原因就在于那个不会被喷到的墙角点..那个点甚至还具备离传送出口很近的特点..由于希尔盖前面有一条长长的极其难打不停刷新怪的甬道，灭一次团要花费起码15分钟去清理小怪，谁还愿意放弃这种福利去开荒呢？<br>   6、把他们分开<br>   猎人自从学会了误导，仇恨分离就成为blz心中的噩梦..这一招平时小怪用的比较多，boss却难得用到，然而格鲁尔一号却给了猎人们展示自己技术的舞台，这是典型的仇恨分离，boss拉走小弟留下..以至于以后这种类型的boss几乎一律被设计成宝箱拾取了..<br>   7、爬墙爬树<br>   爬墙在很多地方有很深远的用途，在boss战中最早发现的是奥妮克希亚的爬墙免恐点，这个bug也许是我在raid中用的第一个bug..说实话还是有很多人不会爬的..然而真正将其发扬光大的，不得不说是悲催的阿克蒙德..这是一个死一个人大家或许就要歇歇的boss..摔死烧死是永恒的主题..我曾经开荒过几次正常打法，说实在的很难带新人。传说中阿克蒙德在爬上世界之树的过程中被愤怒的小精灵炸死，于是有人灵机一动，爬上了两旁高高的树干，所谓人不能在同一个地方栽倒两次，可它偏偏就栽倒了..粗大的树干挡住了火焰，无穷的树枝接住了掉落的人们..灭团点全部消除..这个打法仍然稍显不足，毕竟还是会受到伤害..开阔的地形终究挡不住人类的智慧，在山坡的一角..新的bug点产生了..这次火也烧不到跳也跳不起来..阿克蒙德就此成为了史上第一个白送的关底boss..<br>   8、虽然场地很大，但我们只需要一角<br>   WLK的本bug少了很多，当然也许是没用到..只接触到了25HTOC的4号双子，所有人都站在门口，完全不会吃到任何一个颜色的球..规避了最大的减员技能，也让这个boss彻底便当。当年打这个本还挺high的，也是在黑石尖塔最后的一次，也是梦回轩辕最后一次好好的打副本打raid..<br>   9、一块石板<br>   ctm我基本没打前面的raid，只打了最后的DS，唯一遇到的bug，就是H一号莫卓克的那块坑爹的石板，随手一块石板，就是一堆bug！其实这个boss本来就是白送的..只不过更便当一点罢了..</p>
+<p>   不过说实话，这些bug和祖尔格拉布及卡拉赞比起来真是小巫见大巫，虽然它们不是传统意义上的raid本，但是也是团队的副本。<br>   其中祖尔格拉布的卡老虎已经告诉了我们，地上随便放块石头是最容易出bug的..可惜blz从未吸取过教训，后来的菲米斯莫卓克都是如此..<br>   卡龙则告诉我们，给我一个台阶，还你一个奇迹..这句话至今从未错过..<br>   卡拉赞的跳石像真是无比经典，没有什么是爬不上去..这都是教训啊，如果blz能吸取的话就没有后面那些经典的悬空镜头了..<br>   埃兰的卡门告诉我们，有门的boss就别让boss能出门..<br>   王子的站门口告诉我们，一个打法打多了也就没人觉得是bug了..<br>   当当当，最后隆重推出史上最无敌的副本没有之一，祖阿曼..这个本第一次告诉我无论多么光滑的墙壁也是能够跳上去的..第一次告诉我销毁炉石脱离卡死是可以穿门的…第一次告诉我你以为没有路其实是可以通过的..第一次告诉我…这个本bug多到blz最后取消了术士拉人技能的使用..</p>
+
+    </div>
+
+    
+    
+    
+      
+ 
+       ﻿
+
+<div class="my_post_copyright">
+
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <p><span>本文标题:</span><a href="/2013/04/22/b164/">那些年我们用过的BUGs</a></p>
+
+  <p><span>文章作者:</span><a href="/" title="访问 Dolphin Fu 的个人博客">Dolphin Fu</a></p>
+
+  <p><span>发布时间:</span>2013年04月22日 - 00:45</p>
+
+  <p><span>原始链接:</span><a href="/2013/04/22/b164/" title="那些年我们用过的BUGs">http://dolphinfu.github.io/2013/04/22/b164/</a>
+
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://dolphinfu.github.io/2013/04/22/b164/"  aria-label="复制成功！"></i></span>
+  </p>
+
+  <p><span>许可协议:</span>请勿转载。</p>  
+</div>
+
+<script>
+ 
+    var clipboard = new Clipboard('.fa-clipboard');
+ 
+   $(".fa-clipboard").click(function(){
+
+      clipboard.on('success', function(){
+
+        swal({
+   
+          title: "",
+   
+          text: '复制成功',
+
+          icon: "success",
+ 
+          showConfirmButton: true
+
+          });
+
+          });
+    });
+  
+</script>
+
+
+
+      
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%AD%94%E5%85%BD%E4%B8%96%E7%95%8C/" rel="tag"># 魔兽世界</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2013/04/21/b163/" rel="prev" title="宋姐姐">
+      <i class="fa fa-chevron-left"></i> 宋姐姐
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2013/04/27/b165/" rel="next" title="新华F4">
+      新华F4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dolphin Fu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">674</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dolphinfu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dolphinfu" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://xlm4056.github.io/" title="https:&#x2F;&#x2F;xlm4056.github.io&#x2F;" rel="noopener" target="_blank">Xie's blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dolphin Fu</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">346k</span>
+<div class=“theme-info”>
+	<div class=“powered-by”></div>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">5:15</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
