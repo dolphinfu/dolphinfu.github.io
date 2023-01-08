@@ -166,6 +166,90 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2023/01/08/g10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dolphin Fu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="海豚哥的小屋">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/08/g10/" class="post-title-link" itemprop="url">2022年回忆</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-01-08 18:20" itemprop="dateCreated datePublished" datetime="2023-01-08T18:20:38+08:00">2023-01-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/github/" itemprop="url" rel="index"><span itemprop="name">github</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>127</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>&emsp;&emsp;2022年已经过去，这一年是不平凡的一年。在我一生中，上一次在家休息这么久恐怕已经是1-20年前的事情了，留下的抢菜、口罩、核酸、抗原、封控、健康码、核酸码等等词汇也许永远也不会忘记了吧。希望新的一年能变得更好，至少别变得更差吧。</p>
+<p><img src="/2023/01/08/g10/g10_0.jpg" alt="1"></p>
+<p><img src="/2023/01/08/g10/g10_1.jpg" alt="1"></p>
+
+      
+    </div>
+
+    
+    
+    
+      
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2022/12/31/g9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -229,21 +313,22 @@
       
           <p>&emsp;&emsp;转化表格为文本</p>
 <p>今天也是有点意思，遇到个问题，就是怎么处理一个从其他软件转化出来的word文本，而这个word文件吧，居然全是表格形式的，表格之间还有空行。<br>我试了试全选表格，那个转化为文本是灰色的，不让用，这倒是个麻烦事。<br>想了想还是用宏吧，vba我没用过，研究了半天，写了一段代码好像还能用，在不知道会不会有bug了。</p>
-<p> Sub ConvertAllTables()</p>
-<pre><code>Dim tempTable As Table
+<pre><code>Sub ConvertAllTables()
 
-Application.ScreenUpdating = False
+Dim tempTable As Table
 
-ActiveDocument.DeleteAllEditableRanges wdEditorEveryone
-For Each tempTable In ActiveDocument.Tables
-    tempTable.Range.Editors.Add wdEditorEveryone
-    tempTable.ConvertToText Separator:=wdSeparateByParagraphs, _
-    NestedTables:=True
-Next
-ActiveDocument.SelectAllEditableRanges wdEditorEveryone
-ActiveDocument.DeleteAllEditableRanges wdEditorEveryone
-Application.ScreenUpdating = True</code></pre><p> End Sub</p>
+    Application.ScreenUpdating = False
 
+    ActiveDocument.DeleteAllEditableRanges wdEditorEveryone
+    For Each tempTable In ActiveDocument.Tables
+        tempTable.Range.Editors.Add wdEditorEveryone
+        tempTable.ConvertToText Separator:=wdSeparateByParagraphs, _
+        NestedTables:=True
+    Next
+    ActiveDocument.SelectAllEditableRanges wdEditorEveryone
+    ActiveDocument.DeleteAllEditableRanges wdEditorEveryone
+    Application.ScreenUpdating = True
+End Sub</code></pre>
       
     </div>
 
@@ -520,99 +605,10 @@ Application.ScreenUpdating = True</code></pre><p> End Sub</p>
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://dolphinfu.github.io/2020/09/04/g5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dolphin Fu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="海豚哥的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/04/g5/" class="post-title-link" itemprop="url">寝室对抗赛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-04 15:33" itemprop="dateCreated datePublished" datetime="2020-09-04T15:33:10+08:00">2020-09-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/github/" itemprop="url" rel="index"><span itemprop="name">github</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>&emsp;&emsp;人这一辈子除了和亲人外，大约只有和宿舍的老铁们住在一起的时间最久了吧，大学同房四年，谁打呼噜谁脚臭都一清二楚，这种情况下的默契程度毫无疑问也体现在游戏中，来来看看寝室对抗赛的replays吧。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/04/g5/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/135/">135</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/136/">136</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -678,7 +674,7 @@ Application.ScreenUpdating = True</code></pre><p> End Sub</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">675</span>
+          <span class="site-state-item-count">676</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -751,7 +747,7 @@ Application.ScreenUpdating = True</code></pre><p> End Sub</p>
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">5:15</span>
+    <span title="站点阅读时长">5:16</span>
 </div>
 
         
