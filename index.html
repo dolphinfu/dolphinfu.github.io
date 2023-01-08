@@ -208,7 +208,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>609</span>
+              <span>603</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -229,7 +229,7 @@
       
           <p>&emsp;&emsp;转化表格为文本</p>
 <p>今天也是有点意思，遇到个问题，就是怎么处理一个从其他软件转化出来的word文本，而这个word文件吧，居然全是表格形式的，表格之间还有空行。<br>我试了试全选表格，那个转化为文本是灰色的，不让用，这倒是个麻烦事。<br>想了想还是用宏吧，vba我没用过，研究了半天，写了一段代码好像还能用，在不知道会不会有bug了。</p>
-<p>‘’’<br>Sub ConvertAllTables()</p>
+<p> Sub ConvertAllTables()</p>
 <pre><code>Dim tempTable As Table
 
 Application.ScreenUpdating = False
@@ -242,8 +242,7 @@ For Each tempTable In ActiveDocument.Tables
 Next
 ActiveDocument.SelectAllEditableRanges wdEditorEveryone
 ActiveDocument.DeleteAllEditableRanges wdEditorEveryone
-Application.ScreenUpdating = True</code></pre><p>End Sub</p>
-<p>‘’’</p>
+Application.ScreenUpdating = True</code></pre><p> End Sub</p>
 
       
     </div>
